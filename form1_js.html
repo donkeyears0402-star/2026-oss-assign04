@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>주문 정보</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #f3f4f6;
+      color: #1f2937;
+      font-family: sans-serif;
+    }
+
+    h1, .desc {
+      width: 720px;
+      max-width: 92%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    h1 {
+      margin-top: 28px;
+      margin-bottom: 4px;
+    }
+
+    .desc {
+      margin-top: 0;
+      color: #4b5563;
+    }
+
+    form {
+      width: 720px;
+      max-width: 92%;
+      margin: 16px auto 40px;
+      padding: 24px;
+      background-color: #ffffff;
+      border: 1px solid #d1d5db;
+      border-radius: 12px;
+    }
+
+    fieldset {
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      margin: 0 0 18px;
+      padding: 12px 16px 6px;
+    }
+
+    legend {
+      padding: 0 6px;
+      color: #111827;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      color: #374151;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      margin-bottom: 14px;
+      padding: 8px 10px;
+      color: #111827;
+      background-color: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+    }
+
+    input:hover,
+    select:hover,
+    textarea:hover {
+      border-color: #94a3b8;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #2563eb;
+      outline: 2px solid #bfdbfe;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+      width: auto;
+      margin-right: 6px;
+      margin-bottom: 0;
+    }
+
+    input[type="color"] {
+      width: 72px;
+      height: 36px;
+      padding: 2px;
+    }
+
+    fieldset label {
+      margin-bottom: 10px;
+    }
+
+    .choice label {
+      display: inline-block;
+      margin-right: 16px;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 12px 16px;
+      color: #ffffff;
+      background-color: #2563eb;
+      border: none;
+      border-radius: 8px;
+    }
+
+    button:hover {
+      background-color: #1d4ed8;
+    }
+
+    button:focus {
+      outline: 2px solid #93c5fd;
+    }
+  </style>
+</head>
+<body>
+  <!--
+    Clone Coding 원본
+    https://getbootstrap.com/docs/5.2/examples/checkout/
+    form1_css.html에 required, minlength, submit 검사를 추가했습니다.
+  -->
+  <h1>주문 정보</h1>
+  <p class="desc">이메일 형식과 비밀번호 길이를 확인한 뒤에만 등록됩니다.</p>
+
+  <form id="userForm" action="#" method="post" novalidate>
+    <fieldset>
+      <legend>주문자</legend>
+
+      <div>
+        <label for="lastName">성</label>
+        <input type="text" id="lastName" name="lastName" placeholder="홍" required>
+      </div>
+      <div>
+        <label for="firstName">이름</label>
+        <input type="text" id="firstName" name="firstName" placeholder="길동" required>
+      </div>
+      <div>
+        <label for="username">사용자 이름</label>
+        <input type="text" id="username" name="username" placeholder="username" minlength="4" required>
+      </div>
+      <div>
+        <label for="email">이메일</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+      </div>
+      <div>
+        <label for="password">주문 확인 비밀번호</label>
+        <input type="password" id="password" name="password" minlength="6" required>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>배송지</legend>
+
+      <div>
+        <label for="address">주소</label>
+        <input type="text" id="address" name="address" placeholder="도로명 주소" required>
+      </div>
+      <div>
+        <label for="address2">상세 주소</label>
+        <input type="text" id="address2" name="address2" placeholder="동, 호수 (선택)">
+      </div>
+      <div>
+        <label for="building">건물명</label>
+        <input type="text" id="building" name="building" list="buildingList" placeholder="목록에서 고르거나 직접 입력">
+        <datalist id="buildingList">
+          <option value="공학관"></option>
+          <option value="도서관"></option>
+          <option value="학생회관"></option>
+          <option value="기숙사"></option>
+        </datalist>
+      </div>
+      <div>
+        <label for="country">국가</label>
+        <select id="country" name="country" required>
+          <option value="">선택</option>
+          <option value="kr">대한민국</option>
+          <option value="us">미국</option>
+          <option value="jp">일본</option>
+        </select>
+      </div>
+      <div>
+        <label for="region">지역</label>
+        <select id="region" name="region">
+          <option value="">선택</option>
+          <optgroup label="특별시/광역시">
+            <option value="seoul">서울</option>
+            <option value="busan">부산</option>
+            <option value="incheon">인천</option>
+          </optgroup>
+          <optgroup label="도">
+            <option value="gyeonggi">경기</option>
+            <option value="gangwon">강원</option>
+            <option value="chungnam">충남</option>
+          </optgroup>
+        </select>
+      </div>
+      <div>
+        <label for="zip">우편번호</label>
+        <input type="text" id="zip" name="zip" placeholder="12345">
+      </div>
+      <div>
+        <label for="deliveryDate">희망 배송일</label>
+        <input type="date" id="deliveryDate" name="deliveryDate">
+      </div>
+
+      <fieldset>
+        <legend>배송 방법</legend>
+        <div class="choice">
+          <label><input type="radio" name="shipping" value="standard" checked> 일반 배송</label>
+          <label><input type="radio" name="shipping" value="express"> 빠른 배송</label>
+        </div>
+      </fieldset>
+
+      <label>
+        <input type="checkbox" id="sameAddress" name="sameAddress" value="yes">
+        배송지를 청구지와 같게 저장
+      </label>
+      <label>
+        <input type="checkbox" id="saveInfo" name="saveInfo" value="yes">
+        다음에도 이 정보 사용
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>결제</legend>
+
+      <div class="choice">
+        <label><input type="radio" name="payment" value="credit" checked> 신용카드</label>
+        <label><input type="radio" name="payment" value="debit"> 체크카드</label>
+        <label><input type="radio" name="payment" value="transfer"> 계좌이체</label>
+      </div>
+      <div>
+        <label for="ccName">카드 명의</label>
+        <input type="text" id="ccName" name="ccName" required>
+      </div>
+      <div>
+        <label for="ccNumber">카드 번호</label>
+        <input type="text" id="ccNumber" name="ccNumber" placeholder="숫자만 입력" minlength="8" required>
+      </div>
+      <div>
+        <label for="ccExpiration">만료일</label>
+        <input type="text" id="ccExpiration" name="ccExpiration" placeholder="MM/YY">
+      </div>
+      <div>
+        <label for="ccCvv">CVV</label>
+        <input type="text" id="ccCvv" name="ccCvv">
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>추가 옵션</legend>
+      <div>
+        <label for="ribbon">선물 포장 리본 색</label>
+        <input type="color" id="ribbon" name="ribbon" value="#2563eb">
+      </div>
+      <div>
+        <label for="memo">요청 사항</label>
+        <textarea id="memo" name="memo" rows="4" placeholder="배송 메모"></textarea>
+      </div>
+    </fieldset>
+
+    <button type="submit">주문 계속</button>
+  </form>
+
+  <script>
+    const form = document.querySelector("#userForm");
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const email = document.querySelector("#email");
+      const password = document.querySelector("#password");
+
+      if (!email.checkValidity()) {
+        alert("유효한 이메일을 입력하세요.");
+        email.focus();
+        return;
+      }
+
+      if (!password.checkValidity()) {
+        alert("비밀번호는 6자 이상 입력하세요.");
+        password.focus();
+        return;
+      }
+
+      if (!form.checkValidity()) {
+        const invalid = form.querySelector(":invalid");
+        alert("비어 있거나 형식이 맞지 않는 칸이 있습니다.");
+        if (invalid) {
+          invalid.focus();
+        }
+        return;
+      }
+
+      alert("등록이 완료되었습니다.");
+    });
+  </script>
+</body>
+</html>
